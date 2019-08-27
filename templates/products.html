@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+     <h1>商品清單</h1>
+     <a class="btn btn-success" href="/add_product">Add Product</a>
+     <br><br>
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Product ID</th>
+                 <th>Product Name</th>
+                 <th>Product Stock</th>
+                 <th>Predict</th>
+             </tr>
+         </thead>
+         <tbody>
+                 {% for product in products %}
+                <tr>
+                 <td>{{product.food_ID}}</td>
+                 <td>{{product.food_name}}</td>
+                 <td>{{product.food_stock}}</td>
+                 <td>{{product.predict}}</td>
+                 <td><a href="edit_product/{{product.food_ID}}" class="btn btn-primary pull-right">Edit</a></td>
+                 <td>
+                     <form action="{{url_for('delete_product', id=product.food_ID)}}" method="POST">
+                        <input type="hidden" name="method" value="DELETE">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                     </form>
+                 </td>
+                </tr>
+                {% endfor %}
+         </tbody>
+     </table>
+{% endblock %}

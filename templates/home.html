@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="jumbotron mt-4">
+    <h1 class="display-3">庫存管理系統</h1>
+    {% if session.logged_in == NULL %}
+        <a href="/register" class="btn btn-primary btn-lg">註冊</a>
+        <a href="/login" class="btn btn-success btn-lg">登入</a>
+    {% endif %}
+</div>
+{% endblock %}
